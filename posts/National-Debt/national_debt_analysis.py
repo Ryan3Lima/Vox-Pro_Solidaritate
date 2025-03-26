@@ -108,3 +108,105 @@ def plot_debt_dashboard(df, summary, color_list, pattern_list):
                       xaxis4=dict(title="Year", tickangle=45, tickfont=dict(size=10)),
                       hovermode="x unified")
     fig.show()
+
+
+def compute_deficit_from_debt():
+    url = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny"
+    params = {
+        "filter": "record_date:gte:1990-01-01,record_date:lte:2025-12-31",
+        "format": "json",
+        "page[size]": 10000
+    }
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; national-debt-analyzer/1.0)"}
+    data = []
+    while url:
+        r = requests.get(url, headers=headers, params=params if "?" not in url else None)
+        r.raise_for_status()
+        j = r.json()
+        data.extend(j["data"])
+        url = j.get("links", {}).get("next")
+        if url and url.startswith("?"):
+            url = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny" + url
+
+    df = pd.DataFrame(data)
+    df["record_date"] = pd.to_datetime(df["record_date"])
+    df["year"] = df["record_date"].dt.year
+    df["debt"] = pd.to_numeric(df["tot_pub_debt_out_amt"])
+    df = df.sort_values("record_date").groupby("year").tail(1)
+    df["deficit"] = df["debt"].diff()
+    df["pct_change"] = df["deficit"].pct_change() * 100
+
+    events = {
+        1981: "Reagan Tax Cuts (ERTA)",
+        2001: "Bush Tax Cuts (EGTRRA)",
+        2003: "Bush Tax Cuts (JGTRRA)",
+        2008: "Great Recession Stimulus",
+        2009: "ARRA Stimulus",
+        2010: "Bush Tax Cuts Extended",
+        2011: "Debt Ceiling Crisis",
+        2013: "Fiscal Cliff Deal (Partial Expiration)",
+        2017: "Trump Tax Cuts (TCJA)",
+        2020: "COVID Stimulus (CARES Act)",
+        2021: "American Rescue Plan",
+        2022: "Inflation Reduction Act"
+    }
+    df["event"] = df["year"].map(events)
+    return df
+
+def get_presidential_party_map():
+    return {
+        **dict.fromkeys(range(1993, 2001), "Democrat"),   # Clinton
+        **dict.fromkeys(range(2001, 2009), "Republican"), # Bush
+        **dict.fromkeys(range(2009, 2017), "Democrat"),   # Obama
+        **dict.fromkeys(range(2017, 2021), "Republican"), # Trump
+        **dict.fromkeys(range(2021, 2025), "Democrat"),   # Biden
+    }
+
+
+
+def plot_deficit_from_debt(df):
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x=df["year"],
+        y=df["deficit"],
+        name="Federal Deficit (Debt Increase)",
+        marker_color=df["color"]
+    ))
+
+    # Filter only rows with annotated events
+    annotated_rows = df[df["event"].notna()].sort_values("year")
+
+    # Predefined vertical offsets to cycle through to avoid overlap
+    ay_offsets = [-45, -90, -120, -45, -90]
+
+    # Add annotations with staggered vertical position
+    for i, (_, row) in enumerate(annotated_rows.iterrows()):
+        ay = ay_offsets[i % len(ay_offsets)]  # Cycle through the offsets
+
+        fig.add_annotation(
+            x=row["year"],
+            y=row["deficit"],
+            text=row["event"],
+            showarrow=True,
+            arrowhead=1,
+            ax=0,
+            ay=ay,
+            font=dict(size=10)
+        )
+
+    fig.update_layout(
+        title="U.S. Federal Deficit by Year (Estimated from Debt Increase)",
+        xaxis_title="Year",
+        yaxis_title="Deficit ($)",
+        height=600
+    )
+    fig.show()
+
+
+if __name__ == "__main__":
+    party_map = get_presidential_party_map()
+    df = compute_deficit_from_debt()
+    df["party"] = df["year"].map(party_map)
+    df["color"] = df["party"].map({"Democrat": "blue", "Republican": "red"}).fillna("gray")
+    plot_deficit_from_debt(df)

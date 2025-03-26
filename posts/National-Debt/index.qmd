@@ -191,3 +191,41 @@ fig.show()
 
 
 ```
+
+## National Debt vs. National Deficit
+
+### National Deficit
+
+* The deficit is the shortfall in a single fiscal year.
+
+* It occurs when the government spends more money than it collects in revenue (mainly from taxes).
+
+* If the government takes in less than it spends, it runs a deficit.
+
+* If it takes in more, it runs a surplus.
+
+### National Debt
+
+* The national debt is the total amount of money the government owes over time.
+
+* It’s the sum of all past deficits, minus any surpluses.
+
+* When the government runs a deficit, it borrows money—usually by issuing Treasury bonds—and this borrowing adds to the national debt.
+
+Think of it this way:
+
+**Deficit = the amount you overspent this year**
+
+**Debt = your total credit card balance over time**
+
+## Analysis of Federal Deficit by year and presidential administration
+
+```{python}
+from national_debt_analysis import get_presidential_party_map, compute_deficit_from_debt, plot_deficit_from_debt
+party_map = get_presidential_party_map()
+df = compute_deficit_from_debt()
+df["party"] = df["year"].map(party_map)
+df["color"] = df["party"].map({"Democrat": "blue", "Republican": "red"}).fillna("gray")
+
+plot_deficit_from_debt(df)
+```
