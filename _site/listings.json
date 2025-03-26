@@ -1,9 +1,18 @@
 [
   {
+    "listing": "/Vox-Pro_Solidaritate/index.html",
+    "items": [
+      "/Vox-Pro_Solidaritate/posts/National-Debt/index.html",
+      "/Vox-Pro_Solidaritate/posts/welcome/index.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/posts/National-Debt/index.html",
-      "/posts/welcome/index.html"
+      "/Vox-Pro_Solidaritate/posts/National-Debt/index.html",
+      "/posts/welcome/index.html",
+      "/Vox-Pro_Solidaritate/posts/welcome/index.html"
     ]
   }
 ]
