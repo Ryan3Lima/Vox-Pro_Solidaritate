@@ -14,27 +14,6 @@
     "text": "U.S. National Debt Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nPolitics\n\n\nLife\n\n\nSociety\n\n\nPhilisophy\n\n\n\n\n\n\n\n\n\nMar 26, 2025\n\n\nRyan E LIma\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Vox-Pro-Solidaritate",
-    "section": "",
-    "text": "U.S. National Debt Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. National Debt Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nPolitics\n\n\nLife\n\n\nSociety\n\n\nPhilisophy\n\n\n\n\n\n\n\n\n\nMar 26, 2025\n\n\nRyan E LIma\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nPolitics\n\n\nLife\n\n\nSociety\n\n\nPhilisophy\n\n\n\n\n\n\n\n\n\nMar 26, 2025\n\n\nRyan E LIma\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Trying to understand the world through data."
-  },
-  {
     "objectID": "posts/National-Debt/index.html",
     "href": "posts/National-Debt/index.html",
     "title": "U.S. National Debt Dashboard",
@@ -54,6 +33,55 @@
     "title": "U.S. National Debt Dashboard",
     "section": "Key Takeaways:",
     "text": "Key Takeaways:\n\nNational debt is not strictly tied to political party, but economic events (recessions, crises) are major inflection points.\nThe Trump (2nd Term) projection highlights the need for caution when interpreting future metrics based on partial-year data.\nLong-term debt growth has outpaced GDP growth in many years, signaling potential sustainability challenges."
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#national-debt-vs.-national-deficit",
+    "href": "posts/National-Debt/index.html#national-debt-vs.-national-deficit",
+    "title": "U.S. National Debt Dashboard",
+    "section": "National Debt vs. National Deficit",
+    "text": "National Debt vs. National Deficit\n\nNational Deficit\n\nThe deficit is the shortfall in a single fiscal year.\nIt occurs when the government spends more money than it collects in revenue (mainly from taxes).\nIf the government takes in less than it spends, it runs a deficit.\nIf it takes in more, it runs a surplus.\n\n\n\nNational Debt\n\nThe national debt is the total amount of money the government owes over time.\nIt’s the sum of all past deficits, minus any surpluses.\nWhen the government runs a deficit, it borrows money—usually by issuing Treasury bonds—and this borrowing adds to the national debt.\n\nThink of it this way:\nDeficit = the amount you overspent this year\nDebt = your total credit card balance over time"
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#analysis-of-federal-deficit-by-year-and-presidential-administration",
+    "href": "posts/National-Debt/index.html#analysis-of-federal-deficit-by-year-and-presidential-administration",
+    "title": "U.S. National Debt Dashboard",
+    "section": "Analysis of Federal Deficit by year and presidential administration",
+    "text": "Analysis of Federal Deficit by year and presidential administration\n\n\nCode\nimport requests\nimport pandas as pd\nfrom urllib.parse import urljoin\nimport plotly.graph_objects as go\nfrom plotly.subplots import make_subplots\nimport plotly.io as pio\npio.renderers.default = \"notebook\"  # or \"notebook_connected\", \"iframe\", etc.\nfrom national_debt_analysis import get_presidential_party_map, compute_deficit_from_debt, plot_deficit_from_debt\nparty_map = get_presidential_party_map()\ndf = compute_deficit_from_debt()\ndf[\"party\"] = df[\"year\"].map(party_map)\ndf[\"color\"] = df[\"party\"].map({\"Democrat\": \"blue\", \"Republican\": \"red\"}).fillna(\"gray\")\n\nplot_deficit_from_debt(df)"
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#economic-performancy-by-political-party",
+    "href": "posts/National-Debt/index.html#economic-performancy-by-political-party",
+    "title": "U.S. National Debt Dashboard",
+    "section": "Economic Performancy by political party",
+    "text": "Economic Performancy by political party\nA frequently cited academic paper is:\n“Presidents and the Economy: A Forensic Investigation” Alan S. Blinder & Mark W. Watson, American Economic Review (2016) DOI: 10.1257/aer.20140913\n\nSummary of Their Findings (1947–2013):\n\nGDP Growth: 1.8 percentage points faster under Democratic presidents on average.\nJob Growth: Faster under Democrats.\nUnemployment: Fell more under Democrats, rose under Republicans on average.\nStock Market: Higher returns under Democrats.\nInflation: Slightly lower under Democrats.\nConsumer Confidence: Significantly higher under Democrats.\n\n\nBut here’s the kicker: Blinder and Watson concluded that these differences are statistically significant but not entirely due to policy. Much of the performance seems to come down to “good luck”, such as oil shocks, international crises, and business cycles.\n\n\n\n\n\n\n\n\n\n\n\nIndicator\nDem Avg.\nGOP Avg.\nNotes\nSource\n\n\n\n\nJob Growth (monthly)\n~150k–200k\n~70k–90k\nDems lead significantly\nBlinder & Watson (2016), BLS\n\n\nUnemployment Change\n↓\n↑\nHistorically improves under Dems\nBlinder & Watson (2016)\n\n\nStock Market (annualized S&P 500)\n~10%+\n~6%\nDems outperform\nJPMorgan, Forbes, Blinder & Watson (2016)\n\n\nWage Growth\nHigher under Dems\nLower\nEspecially in low/mid-income\nCEPR, Economic Policy Institute\n\n\nDeficits (% of GDP)\nOften lower under Dems\nOften higher\nSurprising to many\nCBO, U.S. Treasury, Brookings\n\n\nBusiness Investment\nMixed\nMixed\nNot clearly party-dependent\nBlinder & Watson (2016), BEA\n\n\nInflation\nSlightly lower under Dems\nSlightly higher\nOften tied to global factors\nBlinder & Watson (2016), BLS"
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#nuances",
+    "href": "posts/National-Debt/index.html#nuances",
+    "title": "U.S. National Debt Dashboard",
+    "section": "Nuances",
+    "text": "Nuances\n\nCongress Matters Too: Many economic policies require Congressional approval. Mixed-party control can blur outcomes.\nLag Effects: Some economic results stem from policies of previous administrations.\nExternal Shocks: Oil embargoes (1970s), dot-com bust (2000), Great Recession (2008), COVID-19 (2020) heavily affect economic metrics."
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#sources",
+    "href": "posts/National-Debt/index.html#sources",
+    "title": "U.S. National Debt Dashboard",
+    "section": "Sources",
+    "text": "Sources\nBlinder & Watson (2016): “Presidents and the U.S. Economy: An Econometric Exploration” — American Economic Review. DOI: 10.1257/aer.20140913\nBLS: U.S. Bureau of Labor Statistics — Monthly jobs and unemployment data. bls.gov\nCBO: Congressional Budget Office — Historical budget data and deficit/surplus reports. cbo.gov\nU.S. Treasury: Historical federal deficit and debt data. fiscaldata.treasury.gov\nBEA: Bureau of Economic Analysis — Business investment and GDP breakdowns. bea.gov\nCEPR & EPI: Center for Economic and Policy Research, Economic Policy Institute — Wage inequality studies. cepr.net, epi.org\nJPMorgan / Forbes: Analyses on market returns by party. E.g., Forbes"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Trying to understand the world through data."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Vox-Pro-Solidaritate",
+    "section": "",
+    "text": "U.S. National Debt Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nU.S. National Debt Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\n\n\nMar 26, 2025\n\n\nRyan E LIma\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Vox-Pro_Solidaritate/about.html",
