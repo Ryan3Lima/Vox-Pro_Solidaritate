@@ -1,0 +1,79 @@
+---
+title: "U.S. National Debt Dashboard"
+format:
+  html:
+    code-fold: true
+    embed-resources: true
+jupyter: python3
+---
+
+```{python}
+from national_debt_analysis import fetch_debt_data, calculate_debt_metrics, plot_debt_dashboard
+
+df = fetch_debt_data()
+year_end_debt, admin_summary, colors, patterns = calculate_debt_metrics(df)
+plot_debt_dashboard(year_end_debt, admin_summary, colors, patterns)
+```
+
+## Explanation: 
+
+This dashboard visualizes the evolution of the U.S. national debt across presidential administrations from 1993 through 2025. It includes key metrics such as average debt, rate of change, percent change, and debt trajectory over time. Economic events are annotated on the timeline. The dashboard is interactive, allowing users to explore the data by administration and year. The data is sourced from the U.S. Department of the Treasury and the Congressional Budget Office.
+
+### Panel 1 -- Average Debt (USD) by administration:
+
+* Debt levels steadily increase over time, regardless of party.
+
+* Democratic administrations (blue bars) and Republican administrations (solid red) both show growth.
+
+* Trump's second term (2025–2028) is represented with a striped red bar, indicating a projected administration.
+
+* The highest average debt is seen during the projected Trump (2nd Term), reflecting cumulative debt and continued fiscal expansion.
+
+### Panel 2 -- Average Debt Slope (Rate of Change in Debt)
+
+* This shows the average annual increase in total debt for each administration.
+
+* The slope generally increases from Clinton through Trump (1st Term).
+
+* A steep increase under Biden, indicating high borrowing during the COVID recovery period.
+
+* A sharp drop in slope for Trump (2nd Term), likely due to limited available data (only 2025 included so far).
+
+### Panel 3 -- Average Debt Percent Change (%)
+
+* Shows relative year-over-year growth in debt.
+
+* High percent change under Obama (1st Term) and Trump (1st Term) due to post-recession and pandemic spending.
+
+* The percentage declines in recent years, as the debt base becomes much larger.
+
+* The Trump (2nd Term) bar drops to 0% — this reflects only one data point (2025) being available so far.
+
+### Panel 4 -- Debt Trajectory Over Time (1993 - 2025)
+
+* The debt curve is exponential, accelerating particularly after:
+
+    > 2008 (Great Recession)
+
+    > 2020 (COVID-19 Pandemic)
+
+* Vertical dashed lines mark major economic events:
+
+    > 📉 2001: Dot-com Bust
+
+    > 💥 2008: Great Recession
+
+    > ⚠️ 2011: Debt Ceiling Crisis
+
+    > 🦠 2020: COVID-19
+
+There is no sign of debt deceleration — even as crises resolve, debt continues to rise.
+
+
+## Key Takeaways: 
+
+* National debt is not strictly tied to political party, but economic events (recessions, crises) are major inflection points.
+
+* The Trump (2nd Term) projection highlights the need for caution when interpreting future metrics based on partial-year data.
+
+* Long-term debt growth has outpaced GDP growth in many years, signaling potential sustainability challenges.

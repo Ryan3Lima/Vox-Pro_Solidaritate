@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Vox-Pro-Solidaritate",
+    "section": "",
+    "text": "U.S. National Debt Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nPolitics\n\n\nLife\n\n\nSociety\n\n\nPhilisophy\n\n\n\n\n\n\n\n\n\nMar 26, 2025\n\n\nRyan E LIma\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/National-Debt/index.html",
+    "href": "posts/National-Debt/index.html",
+    "title": "U.S. National Debt Dashboard",
+    "section": "",
+    "text": "Code\nfrom national_debt_analysis import fetch_debt_data, calculate_debt_metrics, plot_debt_dashboard\n\ndf = fetch_debt_data()\nyear_end_debt, admin_summary, colors, patterns = calculate_debt_metrics(df)\nplot_debt_dashboard(year_end_debt, admin_summary, colors, patterns)"
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#explanation",
+    "href": "posts/National-Debt/index.html#explanation",
+    "title": "U.S. National Debt Dashboard",
+    "section": "Explanation:",
+    "text": "Explanation:\nThis dashboard visualizes the evolution of the U.S. national debt across presidential administrations from 1993 through 2025. It includes key metrics such as average debt, rate of change, percent change, and debt trajectory over time. Economic events are annotated on the timeline. The dashboard is interactive, allowing users to explore the data by administration and year. The data is sourced from the U.S. Department of the Treasury and the Congressional Budget Office.\n\nPanel 1 – Average Debt (USD) by administration:\n\nDebt levels steadily increase over time, regardless of party.\nDemocratic administrations (blue bars) and Republican administrations (solid red) both show growth.\nTrump’s second term (2025–2028) is represented with a striped red bar, indicating a projected administration.\nThe highest average debt is seen during the projected Trump (2nd Term), reflecting cumulative debt and continued fiscal expansion.\n\n\n\nPanel 2 – Average Debt Slope (Rate of Change in Debt)\n\nThis shows the average annual increase in total debt for each administration.\nThe slope generally increases from Clinton through Trump (1st Term).\nA steep increase under Biden, indicating high borrowing during the COVID recovery period.\nA sharp drop in slope for Trump (2nd Term), likely due to limited available data (only 2025 included so far).\n\n\n\nPanel 3 – Average Debt Percent Change (%)\n\nShows relative year-over-year growth in debt.\nHigh percent change under Obama (1st Term) and Trump (1st Term) due to post-recession and pandemic spending.\nThe percentage declines in recent years, as the debt base becomes much larger.\nThe Trump (2nd Term) bar drops to 0% — this reflects only one data point (2025) being available so far.\n\n\n\nPanel 4 – Debt Trajectory Over Time (1993 - 2025)\n\nThe debt curve is exponential, accelerating particularly after:\n\n2008 (Great Recession)\n\n\n2020 (COVID-19 Pandemic)\n\nVertical dashed lines mark major economic events:\n\n📉 2001: Dot-com Bust\n\n\n💥 2008: Great Recession\n\n\n⚠️ 2011: Debt Ceiling Crisis\n\n\n🦠 2020: COVID-19\n\n\nThere is no sign of debt deceleration — even as crises resolve, debt continues to rise."
+  },
+  {
+    "objectID": "posts/National-Debt/index.html#key-takeaways",
+    "href": "posts/National-Debt/index.html#key-takeaways",
+    "title": "U.S. National Debt Dashboard",
+    "section": "Key Takeaways:",
+    "text": "Key Takeaways:\n\nNational debt is not strictly tied to political party, but economic events (recessions, crises) are major inflection points.\nThe Trump (2nd Term) projection highlights the need for caution when interpreting future metrics based on partial-year data.\nLong-term debt growth has outpaced GDP growth in many years, signaling potential sustainability challenges."
+  }
+]

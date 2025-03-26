@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "Vox-Pro-Solidaritate"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/
+      - icon: twitter
+        href: https://twitter.com
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    toc_numbers: true
+    toc_footers: true
+
+
+
