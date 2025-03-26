@@ -77,3 +77,7 @@ There is no sign of debt deceleration — even as crises resolve, debt continues
 * The Trump (2nd Term) projection highlights the need for caution when interpreting future metrics based on partial-year data.
 
 * Long-term debt growth has outpaced GDP growth in many years, signaling potential sustainability challenges.
+
+## Historical Perspective: 
+
+![Gross Federal Debt as Percent of Gross Domestic Product](https://fred.stlouisfed.org/graph/fredgraph.png?g=1FKXK&height=490)
